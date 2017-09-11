@@ -84,14 +84,14 @@
       }
 
       // We can create bindings
-      if (row.isBindable && AuthorizationService.canI({resource: 'bindings', group: 'servicecatalog.k8s.io'}, 'create')) {
+      if (row.isBindable && AuthorizationService.canI({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'}, 'create')) {
         return true;
       }
       // We can delete bindings
-      if (!_.isEmpty(row.deleteableBindings) && AuthorizationService.canI({resource: 'bindings', group: 'servicecatalog.k8s.io'}, 'delete')) {
+      if (!_.isEmpty(row.deleteableBindings) && AuthorizationService.canI({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'}, 'delete')) {
         return true;
       }
-      // We can delete serviceinstances
+      // We can delete instances
       if (AuthorizationService.canI({resource: 'serviceinstances', group: 'servicecatalog.k8s.io'}, 'delete')) {
         return true;
       }

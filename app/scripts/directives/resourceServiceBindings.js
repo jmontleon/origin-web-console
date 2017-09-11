@@ -61,10 +61,10 @@ function ResourceServiceBindings($filter, DataService, BindingService, CatalogSe
     DataService.unwatchAll(watches);
     watches = [];
 
-    if (CatalogService.SERVICE_CATALOG_ENABLED && canI({resource: 'bindings', group: 'servicecatalog.k8s.io'}, 'watch')) {
+    if (CatalogService.SERVICE_CATALOG_ENABLED && canI({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'}, 'watch')) {
       watches.push(DataService.watch({
         group: 'servicecatalog.k8s.io',
-        resource: 'bindings'
+        resource: 'serviceinstancecredentials'
       }, ctrl.projectContext, function(bindings) {
         ctrl.bindings = bindings.by('metadata.name');
         updateBindings();

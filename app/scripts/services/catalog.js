@@ -13,7 +13,7 @@ angular.module("openshiftConsole")
       _.get(Constants, 'ENABLE_TECH_PREVIEW_FEATURE.service_catalog_landing_page') &&
       APIService.apiInfo({ group: 'servicecatalog.k8s.io', resource: 'serviceclasses' }) &&
       APIService.apiInfo({ group: 'servicecatalog.k8s.io', resource: 'serviceinstances' }) &&
-      APIService.apiInfo({ group: 'servicecatalog.k8s.io', resource: 'bindings' });
+      APIService.apiInfo({ group: 'servicecatalog.k8s.io', resource: 'serviceinstancecredentials' });
 
     var categoryItemByID = {};
     _.each(Constants.CATALOG_CATEGORIES, function(category) {

@@ -152,8 +152,8 @@
       DataService.list({
         group: 'servicecatalog.k8s.io',
         resource: 'serviceinstances'
-      }, context).then(function(serviceinstances) {
-        ctrl.serviceInstances = serviceinstances.by('metadata.name');
+      }, context).then(function(instances) {
+        ctrl.serviceInstances = instances.by('metadata.name');
         sortServiceInstances();
       });
     };

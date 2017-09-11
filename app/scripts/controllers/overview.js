@@ -1330,10 +1330,10 @@ function OverviewController($scope,
       }, {poll: limitWatches, pollInterval: DEFAULT_POLL_INTERVAL}));
     }
 
-    if (CatalogService.SERVICE_CATALOG_ENABLED && canI({resource: 'bindings', group: 'servicecatalog.k8s.io'}, 'watch')) {
+    if (CatalogService.SERVICE_CATALOG_ENABLED && canI({resource: 'serviceinstancecredentials', group: 'servicecatalog.k8s.io'}, 'watch')) {
       watches.push(DataService.watch({
         group: 'servicecatalog.k8s.io',
-        resource: 'bindings'
+        resource: 'serviceinstancecredentials'
       }, context, function(bindings) {
         state.bindings = bindings.by('metadata.name');
         overview.bindingsByInstanceRef = _.groupBy(state.bindings, 'spec.instanceRef.name');

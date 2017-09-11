@@ -33,7 +33,7 @@
       ctrl.unboundApps = ctrl.appsForBinding(bindingName);
       DataService.delete({
         group: 'servicecatalog.k8s.io',
-        resource: 'bindings'
+        resource: 'serviceinstancecredentials'
       },
       bindingName,
       context,
