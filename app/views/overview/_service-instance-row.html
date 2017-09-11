@@ -82,7 +82,7 @@
             <a href="" ng-click="row.showOverlayPanel('unbindService', {target: row.apiObject})">Delete Binding</a>
           </li>
           <li role="menuitem">
-            <a href="" ng-click="row.deprovision()" role="button" ng-if="{resource: 'instances', group: 'servicecatalog.k8s.io'} | canI : 'delete'">Delete</a>
+            <a href="" ng-click="row.deprovision()" role="button" ng-if="{resource: 'serviceinstances', group: 'servicecatalog.k8s.io'} | canI : 'delete'">Delete</a>
           </li>
         </ul>
       </div>

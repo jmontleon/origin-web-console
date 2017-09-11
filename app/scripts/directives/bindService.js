@@ -151,9 +151,9 @@
 
       DataService.list({
         group: 'servicecatalog.k8s.io',
-        resource: 'instances'
-      }, context).then(function(instances) {
-        ctrl.serviceInstances = instances.by('metadata.name');
+        resource: 'serviceinstances'
+      }, context).then(function(serviceinstances) {
+        ctrl.serviceInstances = serviceinstances.by('metadata.name');
         sortServiceInstances();
       });
     };
@@ -187,7 +187,7 @@
         return;
       }
 
-      var instance = ctrl.target.kind === 'Instance' ? ctrl.target : ctrl.serviceToBind;
+      var instance = ctrl.target.kind === 'ServiceInstance' ? ctrl.target : ctrl.serviceToBind;
       if (!instance) {
         return;
       }
@@ -220,7 +220,7 @@
         sortServiceInstances();
       });
 
-      if (ctrl.target.kind === 'Instance') {
+      if (ctrl.target.kind === 'ServiceInstance') {
         ctrl.bindType = "secret-only";
         ctrl.appToBind = null;
         ctrl.serviceToBind = ctrl.target;
@@ -256,7 +256,7 @@
     };
 
     ctrl.bindService = function() {
-      var svcToBind = ctrl.target.kind === 'Instance' ? ctrl.target : ctrl.serviceToBind;
+      var svcToBind = ctrl.target.kind === 'ServiceInstance' ? ctrl.target : ctrl.serviceToBind;
       var application = ctrl.bindType === 'application' ? ctrl.appToBind : undefined;
 
       var context = {

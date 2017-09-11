@@ -91,8 +91,8 @@
       if (!_.isEmpty(row.deleteableBindings) && AuthorizationService.canI({resource: 'bindings', group: 'servicecatalog.k8s.io'}, 'delete')) {
         return true;
       }
-      // We can delete instances
-      if (AuthorizationService.canI({resource: 'instances', group: 'servicecatalog.k8s.io'}, 'delete')) {
+      // We can delete serviceinstances
+      if (AuthorizationService.canI({resource: 'serviceinstances', group: 'servicecatalog.k8s.io'}, 'delete')) {
         return true;
       }
       return false;
@@ -138,7 +138,7 @@
         NotificationsService.hideNotification("deprovision-service-error");
         DataService.delete({
           group: 'servicecatalog.k8s.io',
-          resource: 'instances'
+          resource: 'serviceinstances'
         },
         row.apiObject.metadata.name,
         { namespace: row.apiObject.metadata.namespace },

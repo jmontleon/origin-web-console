@@ -1314,10 +1314,10 @@ function OverviewController($scope,
 
     var canI = $filter('canI');
     // The canI check on watch should be temporary until we have a different solution for handling secret parameters
-    if (CatalogService.SERVICE_CATALOG_ENABLED && canI({resource: 'instances', group: 'servicecatalog.k8s.io'}, 'watch')) {
+    if (CatalogService.SERVICE_CATALOG_ENABLED && canI({resource: 'serviceinstances', group: 'servicecatalog.k8s.io'}, 'watch')) {
       watches.push(DataService.watch({
         group: 'servicecatalog.k8s.io',
-        resource: 'instances'
+        resource: 'serviceinstances'
       }, context, function(serviceInstances) {
         state.serviceInstances = serviceInstances.by('metadata.name');
         _.each(state.serviceInstances, function(instance) {
@@ -1347,10 +1347,10 @@ function OverviewController($scope,
       state.limitRanges = response.by("metadata.name");
     });
 
-    if (CatalogService.SERVICE_CATALOG_ENABLED && canI({resource: 'instances', group: 'servicecatalog.k8s.io'}, 'watch')) {
+    if (CatalogService.SERVICE_CATALOG_ENABLED && canI({resource: 'serviceinstances', group: 'servicecatalog.k8s.io'}, 'watch')) {
       // TODO: update to behave like ImageStreamResolver
       // - we may not even need to list these... perhaps just fetch the ones we need when needed
-      // If we can't watch instances don't bother getting service classes either
+      // If we can't watch serviceinstances don't bother getting service classes either
       DataService.list({
         group: 'servicecatalog.k8s.io',
         resource: 'serviceclasses'

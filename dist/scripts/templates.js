@@ -5668,11 +5668,11 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
 
 
   $templateCache.put('views/directives/bind-service/bind-service-form.html',
-    "<div ng-if=\"ctrl.target.kind !== 'Instance'\">\n" +
+    "<div ng-if=\"ctrl.target.kind !== 'ServiceInstance'\">\n" +
     "<bind-application-form application-name=\"ctrl.target.metadata.name\" form-name=\"ctrl.selectionForm\" service-classes=\"ctrl.serviceClasses\" service-instances=\"ctrl.orderedServiceInstances\" service-to-bind=\"ctrl.serviceToBind\">\n" +
     "</bind-application-form>\n" +
     "</div>\n" +
-    "<div ng-if=\"ctrl.target.kind === 'Instance'\">\n" +
+    "<div ng-if=\"ctrl.target.kind === 'ServiceInstance'\">\n" +
     "<bind-service-form selected-project=\"ctrl.project\" service-class=\"ctrl.serviceClass\" service-class-name=\"ctrl.serviceClassName\" form-name=\"ctrl.selectionForm\" show-pod-presets=\"ctrl.podPresets\" applications=\"ctrl.applications\" project-name=\"ctrl.projectDisplayName\" bind-type=\"ctrl.bindType\" app-to-bind=\"ctrl.appToBind\">\n" +
     "</bind-service-form>\n" +
     "</div>"
@@ -12193,7 +12193,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<a href=\"\" ng-click=\"row.showOverlayPanel('unbindService', {target: row.apiObject})\">Delete Binding</a>\n" +
     "</li>\n" +
     "<li role=\"menuitem\">\n" +
-    "<a href=\"\" ng-click=\"row.deprovision()\" role=\"button\" ng-if=\"{resource: 'instances', group: 'servicecatalog.k8s.io'} | canI : 'delete'\">Delete</a>\n" +
+    "<a href=\"\" ng-click=\"row.deprovision()\" role=\"button\" ng-if=\"{resource: 'serviceinstances', group: 'servicecatalog.k8s.io'} | canI : 'delete'\">Delete</a>\n" +
     "</li>\n" +
     "</ul>\n" +
     "</div>\n" +

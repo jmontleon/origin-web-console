@@ -77,7 +77,7 @@
     };
 
     ctrl.$onInit = function() {
-      var formStepLabel = (ctrl.target.kind === 'Instance') ? 'Applications' : 'Services';
+      var formStepLabel = (ctrl.target.kind === 'ServiceInstance') ? 'Applications' : 'Services';
       ctrl.displayName = serviceInstanceDisplayName(ctrl.target);
       ctrl.steps = [{
         id: 'deleteForm',

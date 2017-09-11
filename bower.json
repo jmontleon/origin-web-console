@@ -46,8 +46,8 @@
     "angular-moment": "1.0.0",
     "angular-utf8-base64": "0.0.5",
     "file-saver": "1.3.3",
-    "origin-web-common": "0.0.54",
-    "origin-web-catalog": "0.0.44"
+    "origin-web-common": "https://github.com/jmontleon/origin-web-common.git#33a85c42b13402f53ebd458066f306665368afaa",
+    "origin-web-catalog": "https://github.com/jmontleon/origin-web-catalog.git#e844921a7b67abf7069cb63e022fc53747abf81d"
   },
   "devDependencies": {
     "angular-mocks": "1.5.11",

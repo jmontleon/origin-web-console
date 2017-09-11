@@ -446,11 +446,11 @@ pollInterval: 6e4
 }));
 var o = t("canI");
 s.SERVICE_CATALOG_ENABLED && o({
-resource: "instances",
+resource: "serviceinstances",
 group: "servicecatalog.k8s.io"
 }, "watch") && Ye.push(l.watch({
 group: "servicecatalog.k8s.io",
-resource: "instances"
+resource: "serviceinstances"
 }, a, function(e) {
 V.serviceInstances = e.by("metadata.name"), _.each(V.serviceInstances, function(e) {
 var t = k.getServiceInstanceAlerts(e);
@@ -473,7 +473,7 @@ pollInterval: 6e4
 })), l.list("limitranges", a, function(e) {
 V.limitRanges = e.by("metadata.name");
 }), s.SERVICE_CATALOG_ENABLED && o({
-resource: "instances",
+resource: "serviceinstances",
 group: "servicecatalog.k8s.io"
 }, "watch") && l.list({
 group: "servicecatalog.k8s.io",
@@ -520,11 +520,11 @@ r.bindings = e.by("metadata.name"), l();
 poll: i,
 pollInterval: 6e4
 })), a.SERVICE_CATALOG_ENABLED && c({
-resource: "instances",
+resource: "serviceinstances",
 group: "servicecatalog.k8s.io"
 }, "watch") && (s.push(t.watch({
 group: "servicecatalog.k8s.io",
-resource: "instances"
+resource: "serviceinstances"
 }, r.projectContext, function(e) {
 r.serviceInstances = e.by("metadata.name"), u();
 }, {
@@ -3662,7 +3662,7 @@ group: "servicecatalog.k8s.io",
 resource: "serviceclasses"
 }) && t.apiInfo({
 group: "servicecatalog.k8s.io",
-resource: "instances"
+resource: "serviceinstances"
 }) && t.apiInfo({
 group: "servicecatalog.k8s.io",
 resource: "bindings"
@@ -12403,7 +12403,7 @@ namespace: _.get(g.target, "metadata.namespace")
 };
 n.list({
 group: "servicecatalog.k8s.io",
-resource: "instances"
+resource: "serviceinstances"
 }, e).then(function(e) {
 g.serviceInstances = e.by("metadata.name"), b();
 });
@@ -12439,7 +12439,7 @@ s && (s(), s = void 0), c && (c(), c = void 0), g.nextTitle = "Close", g.wizardC
 };
 var k = function() {
 if (g.serviceClasses) {
-var e = "Instance" === g.target.kind ? g.target : g.serviceToBind;
+var e = "ServiceInstance" === g.target.kind ? g.target : g.serviceToBind;
 e && (g.serviceClass = g.serviceClasses[e.spec.serviceClassName], g.serviceClassName = e.spec.serviceClassName, g.plan = a.getPlanForInstance(e, g.serviceClass), g.parameterSchema = _.get(g.plan, "alphaBindingCreateParameterSchema"), o.hidden = !_.has(g.parameterSchema, "properties"), g.nextTitle = o.hidden ? "Bind" : "Next >");
 }
 };
@@ -12449,13 +12449,13 @@ group: "servicecatalog.k8s.io",
 resource: "serviceclasses"
 }, {}).then(function(e) {
 g.serviceClasses = e.by("metadata.name"), k(), b();
-}), "Instance" === g.target.kind ? (g.bindType = "secret-only", g.appToBind = null, g.serviceToBind = g.target, g.podPresets && S()) : (g.bindType = "application", g.appToBind = g.target, w());
+}), "ServiceInstance" === g.target.kind ? (g.bindType = "secret-only", g.appToBind = null, g.serviceToBind = g.target, g.podPresets && S()) : (g.bindType = "application", g.appToBind = g.target, w());
 }, g.$onChanges = function(e) {
 e.project && !e.project.isFirstChange() && (g.projectDisplayName = t("displayName")(g.project));
 }, g.$onDestroy = function() {
 s && (s(), s = void 0), c && (c(), c = void 0), l && n.unwatch(l);
 }, g.bindService = function() {
-var e = "Instance" === g.target.kind ? g.target : g.serviceToBind, t = "application" === g.bindType ? g.appToBind : void 0, r = {
+var e = "ServiceInstance" === g.target.kind ? g.target : g.serviceToBind, t = "application" === g.bindType ? g.appToBind : void 0, r = {
 namespace: _.get(e, "metadata.namespace")
 }, o = a.getServiceClassForInstance(e, g.serviceClasses);
 a.bindService(e, t, o, g.parameterData).then(function(e) {
@@ -12503,7 +12503,7 @@ o.nextTitle = "Delete", c();
 o.nextTitle = "Close", o.wizardComplete = !0, s(), l();
 };
 o.$onInit = function() {
-var e = "Instance" === o.target.kind ? "Applications" : "Services";
+var e = "ServiceInstance" === o.target.kind ? "Applications" : "Services";
 o.displayName = i(o.target), o.steps = [ {
 id: "deleteForm",
 label: e,
@@ -13304,7 +13304,7 @@ group: "servicecatalog.k8s.io"
 resource: "bindings",
 group: "servicecatalog.k8s.io"
 }, "delete")) && !i.canI({
-resource: "instances",
+resource: "serviceinstances",
 group: "servicecatalog.k8s.io"
 }, "delete"));
 }, s.closeOverlayPanel = function() {
@@ -13336,7 +13336,7 @@ return e;
 }).result.then(function() {
 o.hideNotification("deprovision-service-error"), n.delete({
 group: "servicecatalog.k8s.io",
-resource: "instances"
+resource: "serviceinstances"
 }, s.apiObject.metadata.name, {
 namespace: s.apiObject.metadata.namespace
 }, {
