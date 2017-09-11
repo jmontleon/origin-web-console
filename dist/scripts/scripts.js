@@ -460,11 +460,11 @@ ue(e, t);
 poll: R,
 pollInterval: 6e4
 })), s.SERVICE_CATALOG_ENABLED && o({
-resource: "bindings",
+resource: "serviceinstancecredentials",
 group: "servicecatalog.k8s.io"
 }, "watch") && Ye.push(l.watch({
 group: "servicecatalog.k8s.io",
-resource: "bindings"
+resource: "serviceinstancecredentials"
 }, a, function(e) {
 V.bindings = e.by("metadata.name"), P.bindingsByInstanceRef = _.groupBy(V.bindings, "spec.instanceRef.name"), Qe();
 }, {
@@ -509,11 +509,11 @@ r.overlayPanelVisible = !1;
 };
 var d = function() {
 t.unwatchAll(s), s = [], a.SERVICE_CATALOG_ENABLED && c({
-resource: "bindings",
+resource: "serviceinstancecredentials",
 group: "servicecatalog.k8s.io"
 }, "watch") && s.push(t.watch({
 group: "servicecatalog.k8s.io",
-resource: "bindings"
+resource: "serviceinstancecredentials"
 }, r.projectContext, function(e) {
 r.bindings = e.by("metadata.name"), l();
 }, {
@@ -3665,7 +3665,7 @@ group: "servicecatalog.k8s.io",
 resource: "serviceinstances"
 }) && t.apiInfo({
 group: "servicecatalog.k8s.io",
-resource: "bindings"
+resource: "serviceinstancecredentials"
 }), i = {};
 _.each(n.CATALOG_CATEGORIES, function(e) {
 _.each(e.items, function(e) {
@@ -12484,7 +12484,7 @@ var a, r, o = this, i = t("serviceInstanceDisplayName"), s = function() {
 var e = o.selectedBinding.metadata.name;
 o.unboundApps = o.appsForBinding(e), n.delete({
 group: "servicecatalog.k8s.io",
-resource: "bindings"
+resource: "serviceinstancecredentials"
 }, e, r, {
 propagationPolicy: null
 }).then(_.noop, function(e) {
@@ -13185,10 +13185,10 @@ var e = _.get(l, "apiObject.kind"), t = _.get(l, "apiObject.metadata.uid"), n = 
 switch (e) {
 case "DeploymentConfig":
 return !!u("deploymentconfigs/instantiate", "create") || !!u("deploymentconfigs", "update") || !(!l.current || !u("deploymentconfigs/log", "get")) || !(!p("pod_presets") || _.isEmpty(l.state.bindableServiceInstances) || !u({
-resource: "bindings",
+resource: "serviceinstancecredentials",
 group: "servicecatalog.k8s.io"
 }, "create")) || !(!p("pod_presets") || _.isEmpty(n) || !u({
-resource: "bindings",
+resource: "serviceinstancecredentials",
 group: "servicecatalog.k8s.io"
 }, "delete")) || l.showStartPipelineAction() || l.showStartBuildAction();
 
@@ -13197,10 +13197,10 @@ return !!u("pods/log", "get") || !!u("pods", "update");
 
 default:
 return !((!l.firstPod(l.current) || !u("pods/log", "get")) && !u(l.rgv, "update") && (!p("pod_presets") || _.isEmpty(l.state.bindableServiceInstances) || !u({
-resource: "bindings",
+resource: "serviceinstancecredentials",
 group: "servicecatalog.k8s.io"
 }, "create")) && (!p("pod_presets") || _.isEmpty(n) || !u({
-resource: "bindings",
+resource: "serviceinstancecredentials",
 group: "servicecatalog.k8s.io"
 }, "delete")));
 }
@@ -13298,10 +13298,10 @@ e.bindings && (s.deleteableBindings = _.reject(s.bindings, "metadata.deletionTim
 return e && _.get(s, [ "state", "secrets", e.spec.secretName ]);
 }, s.actionsDropdownVisible = function() {
 return !(_.get(s.apiObject, "metadata.deletionTimestamp") || (!s.isBindable || !i.canI({
-resource: "bindings",
+resource: "serviceinstancecredentials",
 group: "servicecatalog.k8s.io"
 }, "create")) && (_.isEmpty(s.deleteableBindings) || !i.canI({
-resource: "bindings",
+resource: "serviceinstancecredentials",
 group: "servicecatalog.k8s.io"
 }, "delete")) && !i.canI({
 resource: "serviceinstances",

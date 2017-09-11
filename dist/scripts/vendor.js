@@ -73823,7 +73823,7 @@ return e;
 }), angular.module("openshiftCommonServices").service("BindingService", [ "$filter", "$q", "AuthService", "DataService", "DNS1123_SUBDOMAIN_VALIDATION", function(e, t, n, i, r) {
 var o = {
 group: "servicecatalog.k8s.io",
-resource: "bindings"
+resource: "serviceinstancecredentials"
 }, a = function(e, t) {
 var n = _.get(e, "spec.serviceClassName");
 return _.get(t, [ n ]);
@@ -73859,7 +73859,7 @@ stringData: {}
 return i.stringData.parameters = JSON.stringify(t), i;
 }, d = function(e, t, n) {
 var n, i = e.metadata.name, r = {
-kind: "Binding",
+kind: "ServiceInstanceCredential",
 apiVersion: "servicecatalog.k8s.io/v1alpha1",
 metadata: {
 generateName: i + "-"
@@ -78126,7 +78126,7 @@ h.clearValidityWatcher(), h.ctrl.nextTitle = "Close", h.ctrl.wizardDone = !0, h.
 }, this.onProjectUpdate = function() {
 !h.instancesSupported || h.isNewProject() ? (h.ctrl.serviceInstances = [], h.updateBindability()) : h.ctrl.showPodPresets && (h.ctrl.updating = !0, h.DataService.list({
 group: "servicecatalog.k8s.io",
-resource: "instances"
+resource: "serviceinstances"
 }, {
 namespace: h.ctrl.selectedProject.metadata.name
 }, null, {
